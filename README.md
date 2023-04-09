@@ -1,6 +1,8 @@
 # good-morning-sticker-creator
  A web page for creating different images with different messages.
 
+ View webpage: https://samuel-risner.github.io/good-morning-sticker-creator/
+
 # Development (Windows cmd)
 
  ## Run the Python server
