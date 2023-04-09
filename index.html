@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>good-morning-sticker-creator</title>
+    <link href="static/css/dist/output.css" rel="stylesheet">
+    <script type="module" src="static/js/dist/index.js"></script>
+</head>
+<body>
+    <div class="flex flex-row">
+        <div>
+            <button>
+                background
+            </button>
+        </div>
+        <div>
+            <button>
+                image
+            </button>
+        </div>
+        <div>
+            <button>
+                border
+            </button>
+        </div>
+        <div>
+            <button>
+                text
+            </button>
+        </div>
+    </div>
+
+    <div id="color picker" class="bg-neutral-700 text-white">
+        <div class="w-full text-center text-lg">Colors</div>
+
+        <div class="flex flex-row w-full my-2">
+            <button id="color picker grid button" class="w-3/12 m-auto bg-neutral-500 rounded-lg">Grid</button>
+            <button id="color picker spectrum button" class="w-3/12 m-auto bg-neutral-500 rounded-lg">Spectrum</button>
+            <button id="color picker sliders button" class="w-3/12 m-auto bg-neutral-500 rounded-lg">Sliders</button>
+        </div>
+
+        <div id="color sliders" class="flex flex-col w-screen">
+            <div class="text-neutral-300 m-2">Red</div>
+            <div class="w-full">
+                <input id="color picker sliders range r" type="range" min="0" max="255" value="0" class="w-4/6 m-2">
+                <input id="color picker sliders number r" type="number" min="0" max="255" value="0" class="w-1/6 m-1 px-2 bg-neutral-800 rounded-lg">
+            </div>
+            <div class="text-neutral-300 m-2">Green</div>
+            <div class="w-full">
+                <input id="color picker sliders range g" type="range" min="0" max="255" value="0" class="w-4/6 m-2">
+                <input id="color picker sliders number g" type="number" min="0" max="255" value="0" class="w-1/6 m-1 px-2 bg-neutral-800 rounded-lg">
+            </div>
+            <div class="text-neutral-300 m-2">Blue</div>
+            <div class="w-full">
+                <input id="color picker sliders range b" type="range" min="0" max="255" value="0" class="w-4/6 m-2">
+                <input id="color picker sliders number b" type="number" min="0" max="255" value="0" class="w-1/6 m-1 px-2 bg-neutral-800 rounded-lg">
+            </div>
+            <div class="w-full flex flex-row my-2">
+                <div class="w-4/6 m-1 text-right">Hex-Color</div>
+                <input id="color slider hex input" type="text" value="000000" class="w-3/12 m-1 px-2 bg-neutral-800 rounded-lg">
+            </div>
+        </div>
+
+        <div class="flex flex-row px-4 py-2 justify-center">
+            <div id="color picker active color" class="w-8 h-20 rounded-full mr-4" style="background-color: #000000;"></div>
+
+            <div id="color picker saved colors" class="grid grid-cols-5 gap-4"></div>
+
+            <div class="grid grid-cols-1 gap-4 ml-4">
+                <div id="color picker delete color" class="w-8 h-8 bg-red-600 rounded-full"></div>
+                <div id="color picker add color" class="w-8 h-8 bg-neutral-400 rounded-full"></div>
+                <div id="color picker confirm delete" class="w-8 h-8 bg-green-500 rounded-full" hidden></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

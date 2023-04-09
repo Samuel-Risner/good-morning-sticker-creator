@@ -8,6 +8,6 @@
     "strict": true,
     "skipLibCheck": true,
     "rootDir": "./src",
-    "outDir": "./static/dist/js"
+    "outDir": "./static/js/dist"
   }
 }
