@@ -1,5 +1,7 @@
 import { Sliders } from "./color_picker_menus/sliders.js";
 import { SavedColors } from "./color_picker_menus/saved_colors.js";
+import { Grid } from "./color_picker_menus/grid.js";
+import { anyColorToHex } from "./misc.js";
 /**
  * # Explanation:
  *
@@ -28,6 +30,7 @@ export class ColorPicker {
     mainMenu;
     buttons;
     menus;
+    grid;
     sliders;
     savedColors;
     constructor() {
@@ -42,6 +45,7 @@ export class ColorPicker {
             document.getElementById("color picker spectrum menu"),
             document.getElementById("color picker sliders menu"),
         ];
+        this.grid = new Grid(this);
         this.sliders = new Sliders(this);
         this.savedColors = new SavedColors(this);
         this.setOnClicks();
@@ -78,8 +82,14 @@ export class ColorPicker {
     getActiveColor() {
         return this.savedColors.getActiveColor();
     }
+    /**
+     * Changes the active color and the inputs of the different menus to match the color. The color should be formatted as hex ("#xxxxxx"), rgb ("rgb(x,x,x)") or rgba ("rgba(x,x,x)").
+     * @param color
+     */
     changeActiveColor(color) {
-        this.savedColors.setActiveColor(color);
-        this.sliders.setColor(color);
+        const hex = anyColorToHex(color);
+        this.savedColors.setActiveColor(hex);
+        this.grid.setColor(hex);
+        this.sliders.setColor(hex.substring(1));
     }
 }

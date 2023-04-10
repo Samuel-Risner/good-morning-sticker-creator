@@ -127,6 +127,10 @@ export class SavedColors {
     getActiveColor() {
         return this.activeColorDisplay.style.backgroundColor;
     }
+    /**
+     * Sets the selected color display to match the passed color.
+     * @param color The color formatted as hex ("#xxxxxx") or rgb ("rgb(x,x,x)").
+     */
     setActiveColor(color) {
         this.activeColorDisplay.style.backgroundColor = color;
     }

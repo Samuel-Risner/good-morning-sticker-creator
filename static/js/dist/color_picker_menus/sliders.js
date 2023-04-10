@@ -1,3 +1,4 @@
+import { rgbToHex } from "./../misc.js";
 /**
  * Handles the inputs from the sliders menu.
  */
@@ -34,7 +35,7 @@ export class Sliders {
      * Converts the rgb input from the three sliders ("rangeInputs") into hex and stores it in the hex input element ("hexInput").
      */
     rgbToHex() {
-        this.hexInput.value = (1 << 24 | Number(this.rangeInputs[0].value) << 16 | Number(this.rangeInputs[1].value) << 8 | Number(this.rangeInputs[2].value)).toString(16).slice(1);
+        this.hexInput.value = rgbToHex(this.rangeInputs[0].value, this.rangeInputs[1].value, this.rangeInputs[2].value);
     }
     /**
      * Converts the hex input ("hexInput") into rgb and applies that to the three sliders ("rangeInputs") and the number inputs ("numberInputs").
