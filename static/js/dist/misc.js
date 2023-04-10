@@ -12,14 +12,14 @@ export function removeElementFromList(arr, element) {
     return arr.splice(found, 1);
 }
 /**
- * Returns the hex string for the rgb index WITHOUT the leading "#".
+ * Returns the hex string ("#xxxxxx") for the rgb input.
  * @param r The red value as a string.
  * @param g The green value as a string.
  * @param b The blue value as a string.
- * @returnsThe The hex string WITHOUT the leading "#".
+ * @returnsThe The hex string.
  */
 export function rgbToHex(r, g, b) {
-    return (1 << 24 | Number(r) << 16 | Number(g) << 8 | Number(b)).toString(16).slice(1);
+    return "#" + (1 << 24 | Number(r) << 16 | Number(g) << 8 | Number(b)).toString(16).slice(1);
 }
 /**
  * Converts the passed color to hex. If the color is already in hex (starts with a "#") the color is returned unchanged. Otherwise the color is considered to be in rgb or rgba format if it starts with "rgb(" or "rgba(" and is converted to hex. If the rgb or rgba color is badly formatted or the passed color does not match any of the mentioned conditions "#000000" is returned.
@@ -52,5 +52,5 @@ export function anyColorToHex(color) {
     for (let i = 0; i < 3; i++) {
         parts[i] = parts[i].trim();
     }
-    return "#" + rgbToHex(parts[0], parts[1], parts[2]);
+    return rgbToHex(parts[0], parts[1], parts[2]);
 }

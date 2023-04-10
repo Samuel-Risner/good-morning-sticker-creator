@@ -15,14 +15,14 @@ export function removeElementFromList<T>(arr: Array<T>, element: T): Array<T> {
 }
 
 /**
- * Returns the hex string for the rgb index WITHOUT the leading "#".
+ * Returns the hex string ("#xxxxxx") for the rgb input.
  * @param r The red value as a string.
  * @param g The green value as a string.
  * @param b The blue value as a string.
- * @returnsThe The hex string WITHOUT the leading "#".
+ * @returnsThe The hex string.
  */
 export function rgbToHex(r: string, g: string, b: string) {
-    return (1 << 24 | Number(r) << 16 | Number(g) << 8 | Number(b)).toString(16).slice(1);
+    return "#" + (1 << 24 | Number(r) << 16 | Number(g) << 8 | Number(b)).toString(16).slice(1);
 }
 
 /**
@@ -59,5 +59,5 @@ export function anyColorToHex(color: string) {
         parts[i] = parts[i].trim();
     }
 
-    return "#" + rgbToHex(parts[0], parts[1], parts[2]);
+    return rgbToHex(parts[0], parts[1], parts[2]);
 }

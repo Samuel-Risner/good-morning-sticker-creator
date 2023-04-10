@@ -7,7 +7,7 @@ import { rgbToHex } from "./../misc.js";
 export class Sliders {
 
     /**
-     * The input element for displaying the selected color as hex.
+     * The input element for displaying the selected color as hex ("#xxxxxx").
      */
     private hexInput: HTMLInputElement;
 
@@ -52,22 +52,26 @@ export class Sliders {
      */
     private hexToRgb() {
         const hexValidChars = "abcdef0123456789";
-
-        if (this.hexInput.value.length !== 6) {
+        
+        // If the hex input does not have seven characters ("#xxxxxx") the sliders inputs are used to create a new hex value.
+        if ((this.hexInput.value.length !== 7) || (!this.hexInput.value.startsWith("#"))) {
             this.rgbToHex();
             return;
         }
 
-        for (const character of this.hexInput.value) {
+        // Check the last six characters/not the first one.
+        for (const character of this.hexInput.value.substring(1)) {
             if (!hexValidChars.includes(character)) {
                 this.rgbToHex();
                 return;
             }
         }
 
-        this.rangeInputs[0].value = String(parseInt(this.hexInput.value.substring(0, 2), 16));
-        this.rangeInputs[1].value = String(parseInt(this.hexInput.value.substring(2, 4), 16));
-        this.rangeInputs[2].value = String(parseInt(this.hexInput.value.substring(4, 6), 16));
+        // Set the other inputs to match the hex value.
+
+        this.rangeInputs[0].value = String(parseInt(this.hexInput.value.substring(1, 3), 16));
+        this.rangeInputs[1].value = String(parseInt(this.hexInput.value.substring(3, 5), 16));
+        this.rangeInputs[2].value = String(parseInt(this.hexInput.value.substring(5, 7), 16));
 
         this.numberInputs[0].value = this.rangeInputs[0].value;
         this.numberInputs[1].value = this.rangeInputs[1].value;
@@ -116,13 +120,19 @@ export class Sliders {
         this.hexInput.onchange = () => {
             // Use it (checks are done in the other function).
             this.hexToRgb();
+            // Change the currently active color.
+            this.colorPicker.changeActiveColor(this.getHexValue());
         }
     }
 
     getHexValue(): string {
-        return "#" + this.hexInput.value;
+        return this.hexInput.value;
     }
 
+    /**
+     * Sets the hex input to match the passed colors and calls "hexToRgb".
+     * @param color The color as hex ("#xxxxxx").
+     */
     setColor(color: string) {
         this.hexInput.value = color;
         this.hexToRgb();
