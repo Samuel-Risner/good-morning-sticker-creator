@@ -62,3 +62,6 @@
  ```sh
   npm run watch_ts
  ```
+
+ # TODOs:
+  - [ ] Add a svg for the delete button in the color picker
