@@ -17,12 +17,12 @@ import { SavedColors } from "./color_picker_menus/saved_colors.js";
  *  - Three number input elements fort the same reason.
  *  - One text input element for getting and displaying the hex value of the selected color.
  * 
- * TODO: Add the other two menus
+ * // TODO: Add the other two menus
  * 
  * ## How the menus function:
  *  Whenever you select a color in one of the menus it is automatically used for the active color and also applied in the other two menus. Meaning that all thee menus always display the same color.
  * 
- * TODO: elaborate
+ * // TODO: elaborate
  * 
  */
 export class ColorPicker {
