@@ -26,9 +26,9 @@ export function rgbToHex(r: string, g: string, b: string) {
 }
 
 /**
- * Converts the passed color to hex. If the color is already in hex (starts with a "#") the color is returned unchanged. Otherwise the color is considered to be in rgb or rgba format and is converted to hex. If the rgb or rgba color is badly formatted "#000000" is returned.
+ * Converts the passed color to hex. If the color is already in hex (starts with a "#") the color is returned unchanged. Otherwise the color is considered to be in rgb or rgba format if it starts with "rgb(" or "rgba(" and is converted to hex. If the rgb or rgba color is badly formatted or the passed color does not match any of the mentioned conditions "#000000" is returned.
  * @param color The color to convert.
- * @returns The color as hex.
+ * @returns The color as hex or "#000000" if an error occurred.
  */
 export function anyColorToHex(color: string) {
     // Color is already in hex format:
@@ -36,8 +36,18 @@ export function anyColorToHex(color: string) {
         return color;
     }
 
+    // Color is in rgb format:
+    if (color.startsWith("rgb(")) {
+        color = color.substring(4, color.length - 1); // Remove the starting and ending "()".
+    // Color is in rgba format:
+    } else if (color.startsWith("rgba(")) {
+        color = color.substring(5, color.length - 1); // Remove the starting and ending "()".
+    // Color is badly formatted:
+    } else {
+        return "#000000";
+    }
+
     // Color is in rgb or rgba format.
-    color = color.substring(4, color.length - 1);
     const parts = color.split(",");
 
     if (parts.length < 3) {

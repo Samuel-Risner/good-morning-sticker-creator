@@ -1,12 +1,33 @@
 import { anyColorToHex } from "./../misc.js";
 export class Grid {
     colorPicker;
+    /**
+     * The html element containing all the colors that the user can select.
+     */
     gridContainer;
+    /**
+     * The colors for the first row of the grid (white to black).
+     */
     colorRow;
+    /**
+     * The colors for the columns of the grid.
+     */
     colorColumns;
+    /**
+     * The elements of the first row of the grid. The elements colors correspond to "colorRow".
+     */
     elementRow;
+    /**
+     * The elements of the columns of the grid. The elements correspond to "colorColumns";
+     */
     elementColumns;
+    /**
+     * The currently selected element. It can ba null since other colors that are not in the grid can be selected as well.
+     */
     selectedElement;
+    /**
+     * The color that was last selected in hex format ("#xxxxxx").
+     */
     selectedColor;
     constructor(colorPicker) {
         this.colorPicker = colorPicker;
@@ -19,10 +40,14 @@ export class Grid {
         this.selectedColor = "#000000";
         this.fillColorArrays();
         this.createGrid();
+        this.selectElement(this.elementRow[11]); // black
     }
+    /**
+     * Fills "colorRow" and "colorColumns" with predefined values.
+     */
     fillColorArrays() {
         // Tailwind CSS: "slate-50" to "slate-950" and "black" // 0
-        this.colorRow = ["#f8fafc", "#f1f5f9", "#e2e8f0", "#cbd5e1", "#94a3b8", "#64748b", "#475569", "#334155", "#1e293b", "#0f172a", "#020617", "#000000"];
+        this.colorRow = ["#ffffff", "#f1f5f9", "#e2e8f0", "#cbd5e1", "#94a3b8", "#64748b", "#475569", "#334155", "#1e293b", "#0f172a", "#020617", "#000000"];
         // Tailwind CSS: "cyan-50" to "cyan-950" // 1
         this.colorColumns.push(["#ecfeff", "#cffafe", "#a5f3fc", "#67e8f9", "#22d3ee", "#06b6d4", "#0891b2", "#0e7490", "#155e75", "#164e63", "#083344"].reverse());
         // Tailwind CSS: "blue-50" to "blue-950" // 2
@@ -48,7 +73,11 @@ export class Grid {
         // Tailwind CSS: "emerald-50" to "emerald-950" // 12
         this.colorColumns.push(["#ecfdf5", "#d1fae5", "#a7f3d0", "#6ee7b7", "#34d399", "#10b981", "#059669", "#047857", "#065f46", "#064e3b", "#022c22"].reverse());
     }
+    /**
+     * Creates the html elements and adds them to "gridContainer".
+     */
     createGrid() {
+        // Row:
         for (const color of this.colorRow) {
             const el = document.createElement("div");
             el.style.backgroundColor = color;
@@ -59,6 +88,7 @@ export class Grid {
             };
             this.elementRow.push(el);
         }
+        // Columns:
         for (let i = 0; i < this.colorColumns[0].length; i++) {
             const subArray = [];
             this.elementColumns.push(subArray);
@@ -74,21 +104,41 @@ export class Grid {
             }
         }
     }
+    /**
+     * What happens when zhe user clicks on a color:
+     *  - un-mark the currently selected color
+     *  - mark the new one
+     *  - set the element to be "selectedElement"
+     *  - sets the "selectedColor"
+     *  - calls the color picker to synchronize the colors across all menus.
+     * @param el The element that was clicked.
+     */
     colorOnClick(el) {
+        // Mark the element "el" as selected.
         this.selectElement(el);
         this.selectedColor = anyColorToHex(el.style.backgroundColor);
         this.colorPicker.changeActiveColor(el.style.backgroundColor);
     }
+    /**
+     * Marks the passed element as selected and unselects the currently selected element (unless it is null).
+     * Also sets "selectedElement" to "el".
+     * @param el The element to select.
+     */
     selectElement(el) {
+        // Mark the element as selected.
         el.className = el.className + " border-2 border-black";
+        // Un-mark the previously selected element.
         if (this.selectedElement !== null) {
             this.unselectElement(this.selectedElement);
         }
         this.selectedElement = el;
     }
+    /**
+     * Stops an element from being marked as selected. The element should already be marked otherwise the elements class will corrupt.
+     * @param el The element to be unselected.
+     */
     unselectElement(el) {
         el.className = el.className.substring(0, el.className.length - " border-2 border-black".length);
-        console.log("unselect");
     }
     setColor(color) {
         if (this.selectedColor === color) {

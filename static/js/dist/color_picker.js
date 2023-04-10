@@ -83,8 +83,8 @@ export class ColorPicker {
         return this.savedColors.getActiveColor();
     }
     /**
-     * Changes the active color and the inputs of the different menus to match the color. The color should be formatted as hex ("#xxxxxx"), rgb ("rgb(x,x,x)") or rgba ("rgba(x,x,x)").
-     * @param color
+     * Changes the active color and the inputs of the different menus to match the color.
+     * @param color Should be formatted as hex ("#xxxxxx"), rgb ("rgb(x,x,x)") or rgba ("rgba(x,x,x)").
      */
     changeActiveColor(color) {
         const hex = anyColorToHex(color);
