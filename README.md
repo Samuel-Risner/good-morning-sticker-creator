@@ -68,3 +68,5 @@
   - [ ] Add a svg for the confirm delete button in the color picker
   - [ ] Add a svg for the add color button in the color picker
   - [ ] Add the color spectrum menu in the color picker
+  - [ ] Add a svg for the close button in the color picker
+ 

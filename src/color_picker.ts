@@ -38,6 +38,8 @@ export class ColorPicker {
     private sliders: Sliders;
     private savedColors: SavedColors;
 
+    private closeButton: HTMLButtonElement;
+
     constructor() {
         this.mainMenu = document.getElementById("color picker") as HTMLDivElement;
         
@@ -56,6 +58,9 @@ export class ColorPicker {
         this.grid = new Grid(this);
         this.sliders = new Sliders(this);
         this.savedColors = new SavedColors(this);
+
+        this.closeButton = document.getElementById("color picker close button") as HTMLButtonElement;
+        this.closeButton.onclick = () => { this.hide() };
 
         this.setOnClicks();
     }
