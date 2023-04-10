@@ -90,6 +90,6 @@ export class ColorPicker {
         const hex = anyColorToHex(color);
         this.savedColors.setActiveColor(hex);
         this.grid.setColor(hex);
-        this.sliders.setColor(hex.substring(1));
+        this.sliders.setColor(hex);
     }
 }
