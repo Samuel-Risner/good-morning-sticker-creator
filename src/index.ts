@@ -1,3 +1,13 @@
 import { MenuHandler } from "./menu_handler.js";
 
-const menuHandler = new MenuHandler();
+class Main {
+
+    private menuHandler: MenuHandler;
+
+    constructor() {
+        this.menuHandler = new MenuHandler();
+    }
+
+}
+
+const main = new Main();
