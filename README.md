@@ -5,7 +5,7 @@
 
 # Development (Windows cmd)
 
- ## Run the Python server
+ ## Run the Python server for the first time
 
   1. Create a virtual environment:
    ```shell
@@ -34,6 +34,9 @@
    ```shell
     deactivate
    ```
+
+ ## Run the server for a second time
+  Repeat steps 2, 4, 5 and 6.
 
  ## Install Node.js Stuff
   ```shell
