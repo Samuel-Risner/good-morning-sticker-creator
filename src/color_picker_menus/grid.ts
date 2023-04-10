@@ -22,7 +22,7 @@ export class Grid {
      */
     private elementRow: HTMLDivElement[];
     /**
-     * The elements of the columns of the grid. The elements correspond to "colorColumns";
+     * The elements of the columns of the grid. The elements correspond INDIRECTLY to "colorColumns";
      */
     private elementColumns: HTMLDivElement[][];
 
@@ -116,7 +116,7 @@ export class Grid {
         }
         
         // Columns:
-        for (let i = 0; i < this.colorColumns[0].length; i++) {
+        for (let i = 0; i < this.colorColumns[i].length; i++) {
             const subArray: HTMLDivElement[] = [];
             this.elementColumns.push(subArray);
             for (let j = 0; j < this.colorColumns.length; j++) {
@@ -188,7 +188,7 @@ export class Grid {
 
         for (let i = 0; i < this.colorColumns.length; i++) {
             for (let j = 0; j < this.colorColumns[i].length; j++) {
-                if (this.colorColumns[j][i] === color) {
+                if (this.colorColumns[i][j] === color) {
                     this.selectElement(this.elementColumns[j][i]);
                     return;
                 }
