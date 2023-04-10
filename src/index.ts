@@ -1,3 +1,3 @@
-import { ColorPicker } from "./color_picker.js";
+import { MenuHandler } from "./menu_handler.js";
 
-const colorPicker = new ColorPicker();
+const menuHandler = new MenuHandler();

@@ -9,50 +9,46 @@
     <script type="module" src="static/js/dist/index.js"></script>
 </head>
 <body>
-    <div class="flex flex-row">
-        <div>
-            <button>
-                background
-            </button>
-        </div>
-        <div>
-            <button>
-                image
-            </button>
-        </div>
-        <div>
-            <button>
-                border
-            </button>
-        </div>
-        <div>
-            <button>
-                text
-            </button>
-        </div>
+    <div class="grid grid-cols-2">
+        <button name="button show color picker" class="w-11/12 m-auto my-2 p-1 border-2 border-neutral-400 rounded-full bg-neutral-300">
+            background
+        </button>
+        <button class="w-11/12 m-auto my-2 p-1 border-2 border-neutral-400 rounded-full bg-neutral-300">
+            image
+        </button>
+        <button class="w-11/12 m-auto my-2 p-1 border-2 border-neutral-400 rounded-full bg-neutral-300">
+            border
+        </button>
+        <button class="w-11/12 m-auto my-2 p-1 border-2 border-neutral-400 rounded-full bg-neutral-300">
+            text
+        </button>
     </div>
 
-    <div id="color picker" class="bg-neutral-700 text-white">
+    <div id="color picker" class="bg-neutral-700 text-white" hidden>
+        <!-- The header including the close button. -->
         <div class="grid grid-cols-3 gap-4">
             <div></div>
             <div class="text-center text-lg">Colors</div>
             <button id="color picker close button">X</button>
         </div>
         
-
+        <!-- The buttons for selecting the sub menus. -->
         <div class="flex flex-row w-full my-2">
             <button id="color picker grid button" class="w-3/12 m-auto bg-neutral-500 rounded-lg">Grid</button>
             <button id="color picker spectrum button" class="w-3/12 m-auto bg-neutral-500 rounded-lg">Spectrum</button>
             <button id="color picker sliders button" class="w-3/12 m-auto bg-neutral-500 rounded-lg">Sliders</button>
         </div>
 
+        <!-- The grid menu. -->
         <div id="color picker grid menu" class="p-2">
             <div id="color picker grid colors" class="grid grid-cols-12 gap-1"></div>
         </div>
 
+        <!-- The spectrum menu. -->
         <div id="color picker spectrum menu" hidden>spectrum</div>
 
         <!-- TODO: find out why I need a second div for the hidden attribute -->
+        <!-- The sliders menu. -->
         <div id="color picker sliders menu" hidden>
             <div class="flex flex-col w-screen">
                 <div class="text-neutral-300 m-2">Red</div>
@@ -77,6 +73,7 @@
             </div>
         </div>
 
+        <!-- The footer displaying the current color and the saved colors. -->
         <div class="flex flex-row px-4 py-2 justify-center">
             <div id="color picker active color" class="w-8 h-20 rounded-full mr-4" style="background-color: #000000;"></div>
 
