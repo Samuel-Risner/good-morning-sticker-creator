@@ -1,4 +1,5 @@
 import { ColorPicker } from "../color_picker.js";
+
 /**
  * Handles the inputs from the sliders menu.
  */
