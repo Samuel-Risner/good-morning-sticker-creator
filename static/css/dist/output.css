@@ -589,6 +589,14 @@ video {
   width: 100vw;
 }
 
+.w-2\/3 {
+  width: 66.666667%;
+}
+
+.w-5\/6 {
+  width: 83.333333%;
+}
+
 .grid-flow-row {
   grid-auto-flow: row;
 }
@@ -627,6 +635,10 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
 }
 
 .rounded-full {

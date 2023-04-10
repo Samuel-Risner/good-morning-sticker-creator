@@ -155,7 +155,7 @@ export class Grid {
      */
     private selectElement(el: HTMLDivElement) {
         // Mark the element as selected.
-        el.className = el.className + " border-2 border-black";
+        el.className = el.className + " border-2 border-black w-5/6 m-auto";
         // Un-mark the previously selected element.
         if (this.selectedElement !== null) {
             this.unselectElement(this.selectedElement);
@@ -169,7 +169,7 @@ export class Grid {
      * @param el The element to be unselected.
      */
     private unselectElement(el: HTMLDivElement) {
-        el.className = el.className.substring(0, el.className.length - " border-2 border-black".length);
+        el.className = el.className.substring(0, el.className.length - " border-2 border-black w-5/6 m-auto".length);
     }
 
     setColor(color: string) {
