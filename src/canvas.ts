@@ -37,4 +37,8 @@ export class Canvas {
         this.drawCanvas();
     }
 
+    adaptCanvasDisplaySize(width: number, height: number) {
+        this.canvas.style.width = `${width}px`;
+    }
+
 }

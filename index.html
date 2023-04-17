@@ -24,11 +24,13 @@
         </button>
     </div>
 
-    <div id="canvasContainer"></div>
+    <div>
+        <div id="canvasContainer"></div>
+    </div>
 
-    <div id="color picker" class="bg-neutral-700 text-white" hidden>
+    <div id="color picker" class="bg-neutral-700 text-white float fixed bottom-0 left-0" hidden>
         <div class="grid grid-cols-3 gap-4 p-4">
-            <div><button id="colorPickerApplyColor" class="w-11/12 bg-neutral-500 rounded-lg"></button></div>
+            <button id="colorPickerApplyColor" class="w-11/12 bg-neutral-500 rounded-lg"></button>
             <div class="text-lg m-auto">Colors</div>
             <button id="color picker close button" class="w-11/12 bg-neutral-500 rounded-lg">X</button>
         
@@ -37,7 +39,6 @@
             <button id="color picker sliders button" class="w-11/12 bg-neutral-500 rounded-lg">Sliders</button>
         </div>
 
-        <!-- The grid menu. -->
         <div id="color picker grid menu" class="p-2">
             <div id="color picker grid colors" class="grid grid-cols-12 gap-1"></div>
         </div>

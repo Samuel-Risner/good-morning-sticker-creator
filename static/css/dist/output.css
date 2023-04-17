@@ -516,6 +516,34 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.visible {
+  visibility: visible;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.float-left {
+  float: left;
+}
+
 .m-1 {
   margin: 0.25rem;
 }
@@ -541,6 +569,10 @@ video {
   margin-right: 1rem;
 }
 
+.ml-0 {
+  margin-left: 0px;
+}
+
 .flex {
   display: flex;
 }
@@ -553,12 +585,21 @@ video {
   display: none;
 }
 
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
 .h-20 {
   height: 5rem;
 }
 
 .h-8 {
   height: 2rem;
+}
+
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .w-1\/6 {
@@ -577,6 +618,10 @@ video {
   width: 66.666667%;
 }
 
+.w-5\/6 {
+  width: 83.333333%;
+}
+
 .w-8 {
   width: 2rem;
 }
@@ -587,6 +632,26 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.w-7 {
+  width: 1.75rem;
+}
+
+.translate-x-2 {
+  --tw-translate-x: 0.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-50 {
+  --tw-scale-x: .5;
+  --tw-scale-y: .5;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .grid-cols-1 {
@@ -629,6 +694,10 @@ video {
   gap: 1rem;
 }
 
+.overflow-scroll {
+  overflow: scroll;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
@@ -643,6 +712,11 @@ video {
 
 .border-2 {
   border-width: 2px;
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .border-neutral-400 {
@@ -712,6 +786,10 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.pl-0 {
+  padding-left: 0px;
+}
+
 .text-right {
   text-align: right;
 }
@@ -729,4 +807,9 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.blur-md {
+  --tw-blur: blur(12px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }

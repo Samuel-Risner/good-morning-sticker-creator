@@ -29,4 +29,7 @@ export class Canvas {
         this.bgColor = bgColor;
         this.drawCanvas();
     }
+    adaptCanvasDisplaySize(width, height) {
+        this.canvas.style.width = `${width}px`;
+    }
 }

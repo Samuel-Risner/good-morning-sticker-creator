@@ -14,5 +14,17 @@ export class MenuHandler {
 
         this.colorPicker = new ColorPicker();
         this.bgColor = new BgColor(this.colorPicker, this.canvas);
+
+        window.onresize = () => {
+            this.onWindowResize();
+        }
+
+        this.onWindowResize();
+    }
+    
+    onWindowResize() {
+        this.canvas.adaptCanvasDisplaySize(window.innerWidth, window.innerHeight);
     }
 }
+
+const menuHandler = new MenuHandler();
