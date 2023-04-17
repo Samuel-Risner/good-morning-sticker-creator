@@ -1,7 +1,7 @@
 /**
  * Returns a new array without the specified element.
  * @param arr The array from which you want to remove the element.
- * @param element The element you want to remove.
+ * @param element The element which you want to remove.
  * @returns A new array not including the element.
  */
 export function removeElementFromList<T>(arr: Array<T>, element: T): Array<T> {
@@ -16,19 +16,19 @@ export function removeElementFromList<T>(arr: Array<T>, element: T): Array<T> {
 
 /**
  * Returns the hex string ("#xxxxxx") for the rgb input.
- * @param r The red value as a string.
- * @param g The green value as a string.
- * @param b The blue value as a string.
+ * @param r The red value as a string or number.
+ * @param g The green value as a string or number.
+ * @param b The blue value as a string or number.
  * @returnsThe The hex string.
  */
-export function rgbToHex(r: string, g: string, b: string) {
+export function rgbToHex(r: string | number, g: string | number, b: string | number) {
     return "#" + (1 << 24 | Number(r) << 16 | Number(g) << 8 | Number(b)).toString(16).slice(1);
 }
 
 /**
  * Converts the passed color to hex. If the color is already in hex (starts with a "#") the color is returned unchanged. Otherwise the color is considered to be in rgb or rgba format if it starts with "rgb(" or "rgba(" and is converted to hex. If the rgb or rgba color is badly formatted or the passed color does not match any of the mentioned conditions "#000000" is returned.
  * @param color The color to convert.
- * @returns The color as hex or "#000000" if an error occurred.
+ * @returns The color as hex or "#000000" if an error occurred or the same color if the passed color was already in hex.
  */
 export function anyColorToHex(color: string) {
     // Color is already in hex format:
@@ -54,7 +54,7 @@ export function anyColorToHex(color: string) {
         return "#000000";
     }
     
-    // remove spaces and stuff.
+    // Remove spaces and stuff:
     for (let i = 0; i < 3; i++) {
         parts[i] = parts[i].trim();
     }

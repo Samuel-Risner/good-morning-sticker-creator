@@ -1,4 +1,4 @@
-import { removeElementFromList } from "./../misc.js";
+import { removeElementFromList } from "./../../misc.js";
 /**
  * Handles the menu for selecting colors.
  */

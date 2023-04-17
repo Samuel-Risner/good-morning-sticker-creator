@@ -1,13 +1,18 @@
-import { MenuHandler } from "./menu_handler.js";
+import { Canvas } from "./canvas.js";
+import { BgColor } from "./menus/bg_color.js";
+import { ColorPicker } from "./menus/color_picker.js";
 
-class Main {
+export class MenuHandler {
 
-    private menuHandler: MenuHandler;
+    private canvas: Canvas;
 
-    constructor() {
-        this.menuHandler = new MenuHandler();
+    private colorPicker: ColorPicker;
+    private bgColor: BgColor;
+
+    constructor()  {
+        this.canvas = new Canvas();
+
+        this.colorPicker = new ColorPicker();
+        this.bgColor = new BgColor(this.colorPicker, this.canvas);
     }
-
 }
-
-const main = new Main();

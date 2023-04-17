@@ -1,4 +1,4 @@
-import { rgbToHex } from "./../misc.js";
+import { rgbToHex } from "./../../misc.js";
 /**
  * Handles the inputs from the sliders menu.
  */

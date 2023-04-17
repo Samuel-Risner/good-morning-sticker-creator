@@ -1,4 +1,4 @@
-import { removeElementFromList } from "./../misc.js";
+import { removeElementFromList } from "./../../misc.js";
 import { Sliders } from "./sliders.js";
 import { ColorPicker } from "./../color_picker.js";
 
