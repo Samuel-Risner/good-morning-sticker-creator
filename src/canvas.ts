@@ -41,4 +41,12 @@ export class Canvas {
         this.canvas.style.width = `${width}px`;
     }
 
+    hide() {
+        this.canvasContainer.hidden = true;
+    }
+
+    show() {
+        this.canvasContainer.hidden = false;
+    }
+
 }

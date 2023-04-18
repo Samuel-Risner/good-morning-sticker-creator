@@ -5,7 +5,7 @@ import { ImagePicker } from "./menus/image_picker.js";
 const canvas = new Canvas();
 const colorPicker = new ColorPicker();
 const bgColor = new BgColor(colorPicker, canvas);
-const imagePicker = new ImagePicker();
+const imagePicker = new ImagePicker(canvas);
 window.onresize = () => {
     onWindowResize();
 };

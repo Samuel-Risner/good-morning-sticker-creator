@@ -1,9 +1,20 @@
+import { Canvas } from "../canvas.js";
+import { InsertImage } from "./image_picker_menus/insert_image.js";
+import { LibraryMenu } from "./image_picker_menus/library.js";
+import { UploadMenu } from "./image_picker_menus/upload.js";
+
 export class ImagePicker {
 
     private mainMenu:HTMLDivElement;
     private showMenuButton: HTMLButtonElement;
 
-    constructor() {
+    private uploadMenu: UploadMenu;
+    private libraryMenu: LibraryMenu;
+    private insertImage: InsertImage;
+
+    constructor(
+        private canvas: Canvas
+    ) {
         this.mainMenu = document.getElementById("chooseImageMenu") as HTMLDivElement;
         this.showMenuButton = document.getElementById("chooseImage") as HTMLButtonElement;
 
@@ -11,6 +22,10 @@ export class ImagePicker {
             this.show();
             this.getAvailableImages();
         }
+
+        this.uploadMenu = new UploadMenu(this);
+        this.libraryMenu = new LibraryMenu(this);
+        this.insertImage = new InsertImage(this);
     }
 
     private async getAvailableImages() {
@@ -35,9 +50,16 @@ export class ImagePicker {
 
     show() {
         this.mainMenu.hidden = false;
+        this.canvas.hide();
     }
 
     hide() {
         this.mainMenu.hidden = true;
+    }
+
+    hideSubMenus() {
+        this.libraryMenu.hide();
+        this.uploadMenu.hide();
+        this.insertImage.hide();
     }
 }

@@ -32,4 +32,10 @@ export class Canvas {
     adaptCanvasDisplaySize(width, height) {
         this.canvas.style.width = `${width}px`;
     }
+    hide() {
+        this.canvasContainer.hidden = true;
+    }
+    show() {
+        this.canvasContainer.hidden = false;
+    }
 }
