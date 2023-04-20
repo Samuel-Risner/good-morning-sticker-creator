@@ -3,7 +3,6 @@ import { BgColor } from "./menus/bg_color.js";
 import { ColorPicker } from "./menus/color_picker.js";
 import { ImagePicker } from "./menus/image_picker.js";
 
-
 const canvas = new Canvas();
 
 const colorPicker = new ColorPicker();

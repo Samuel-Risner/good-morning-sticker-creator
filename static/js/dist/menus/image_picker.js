@@ -5,31 +5,24 @@ export class ImagePicker {
     canvas;
     mainMenu;
     showMenuButton;
-    uploadMenu;
+    closeMenuButton;
     libraryMenu;
+    uploadMenu;
     insertImage;
     constructor(canvas) {
         this.canvas = canvas;
         this.mainMenu = document.getElementById("chooseImageMenu");
         this.showMenuButton = document.getElementById("chooseImage");
+        this.closeMenuButton = document.getElementById("chooseImageMenuClose");
         this.showMenuButton.onclick = () => {
             this.show();
-            this.getAvailableImages();
         };
-        this.uploadMenu = new UploadMenu(this);
+        this.closeMenuButton.onclick = () => {
+            this.hide();
+        };
         this.libraryMenu = new LibraryMenu(this);
+        this.uploadMenu = new UploadMenu(this, this.libraryMenu);
         this.insertImage = new InsertImage(this);
-    }
-    async getAvailableImages() {
-        await fetch("/data/img_data.json").then(async (res) => {
-            await res.json().then((_res) => {
-                console.log(_res);
-            }).catch((_err) => {
-                console.log(_err);
-            });
-        }).catch((err) => {
-            console.log(err);
-        });
     }
     show() {
         this.mainMenu.hidden = false;

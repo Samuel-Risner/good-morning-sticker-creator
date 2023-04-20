@@ -7,9 +7,10 @@ export class ImagePicker {
 
     private mainMenu:HTMLDivElement;
     private showMenuButton: HTMLButtonElement;
+    private closeMenuButton: HTMLButtonElement;
 
-    private uploadMenu: UploadMenu;
     private libraryMenu: LibraryMenu;
+    private uploadMenu: UploadMenu;
     private insertImage: InsertImage;
 
     constructor(
@@ -17,35 +18,19 @@ export class ImagePicker {
     ) {
         this.mainMenu = document.getElementById("chooseImageMenu") as HTMLDivElement;
         this.showMenuButton = document.getElementById("chooseImage") as HTMLButtonElement;
+        this.closeMenuButton = document.getElementById("chooseImageMenuClose") as HTMLButtonElement;
 
         this.showMenuButton.onclick = () => {
             this.show();
-            this.getAvailableImages();
         }
 
-        this.uploadMenu = new UploadMenu(this);
-        this.libraryMenu = new LibraryMenu(this);
-        this.insertImage = new InsertImage(this);
-    }
+        this.closeMenuButton.onclick = () => {
+            this.hide();
+        }
 
-    private async getAvailableImages() {
-        await fetch("/data/img_data.json").then(
-            async (res) => {
-                await res.json().then(
-                    (_res) => {
-                        console.log(_res);
-                    }
-                ).catch(
-                    (_err) => {
-                        console.log(_err);
-                    }
-                )
-            }
-        ).catch(
-            (err) => {
-                console.log(err);
-            }
-        )
+        this.libraryMenu = new LibraryMenu(this);
+        this.uploadMenu = new UploadMenu(this, this.libraryMenu);
+        this.insertImage = new InsertImage(this);
     }
 
     show() {

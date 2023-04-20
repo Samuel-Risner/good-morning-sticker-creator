@@ -61,3 +61,32 @@ export function anyColorToHex(color: string) {
 
     return rgbToHex(parts[0], parts[1], parts[2]);
 }
+
+export function flash(msg: string, category: string) {
+    const container = document.getElementById("flashedMessages") as HTMLDivElement;
+
+    const div = document.createElement("div");
+
+    if (category === "error") {
+        div.className = "flex flex-row bg-red-500 rounded-xl px-2 w-fit m-1 ml-auto";
+    } else if (category === "success") {
+        div.className = "flex flex-row bg-green-500 rounded-xl px-2 w-fit m-1 ml-auto";
+    } else {
+        div.className = "flex flex-row bg-blue-500 rounded-xl px-2 w-fit m-1 ml-auto";
+    }
+
+    
+    const button = document.createElement("button");
+    button.textContent = "X";
+    button.onclick = () => {
+        div.remove();
+    }
+    button.className = "text-white pr-2";
+
+    const textDiv = document.createElement("div");
+    textDiv.textContent = msg;
+    
+    div.appendChild(button);
+    div.appendChild(textDiv);
+    container.appendChild(div);
+}

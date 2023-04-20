@@ -1,4 +1,6 @@
+import { flash } from "./../../misc.js";
 import { ImagePicker } from "./../image_picker.js";
+import { LibraryMenu } from "./library.js";
 
 export class UploadMenu {
     
@@ -6,10 +8,11 @@ export class UploadMenu {
     private menu: HTMLDivElement;
 
     private dragElement: HTMLDivElement;
-    private imagePreview: HTMLImageElement;
+    private fileInput: HTMLInputElement;
 
     constructor(
-        private imagePicker: ImagePicker
+        private imagePicker: ImagePicker,
+        private libraryMenu: LibraryMenu
     ) {
         this.showMenuButton = document.getElementById("chooseImageMenuUploadMenuButton") as HTMLButtonElement;
         this.menu = document.getElementById("chooseImageMenuUploadMenu") as HTMLDivElement;
@@ -27,7 +30,13 @@ export class UploadMenu {
             this.onDragOver(ev);
         }
 
-        this.imagePreview = document.getElementById("fileUploadImagePreview") as HTMLImageElement;
+        this.fileInput = document.getElementById("uploadedBackgroundImage") as HTMLInputElement;
+
+        this.fileInput.oninput = () => {
+            const fileList = this.fileInput.files as FileList;
+            flash(`Successfully uploaded the file with the name "${fileList[0].name}"`, "");
+            this.libraryMenu.addUploadedImage(URL.createObjectURL(fileList[0]));
+        }
     }
 
     hide() {
@@ -40,8 +49,6 @@ export class UploadMenu {
     }
 
     private onDrop(ev: DragEvent) {
-        console.log("Files dropped!");
-
         ev.preventDefault();
 
         // See: https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop
@@ -51,20 +58,23 @@ export class UploadMenu {
         if (dataTransfer.items) {
             // Use DataTransferItemList interface to access the file(s)
             [...dataTransfer.items].forEach((item, i) => {
-              // If dropped items aren't files, reject them
-              if (item.kind === "file") {
-                const file = item.getAsFile() as File;
-                console.log(`file[${i}].name = ${file.name}`);
-                console.log(file);
-                this.imagePreview.src = URL.createObjectURL(file);
-              }
+                // If dropped items aren't files, reject them
+                if (item.kind === "file") {
+                    const file = item.getAsFile() as File;
+                    // console.log(`file[${i}].name = ${file.name}`);
+                    // console.log(file);
+                    flash(`Successfully uploaded the file with the name "${file.name}"`, "");
+                    this.libraryMenu.addUploadedImage(URL.createObjectURL(file));
+                }
             });
-          } else {
+        } else {
             // Use DataTransfer interface to access the file(s)
             [...dataTransfer.files].forEach((file, i) => {
-              console.log(`file[${i}].name = ${file.name}`);
+                // console.log(`file[${i}].name = ${file.name}`);
+                flash(`Successfully uploaded the file with the name "${file.name}"`, "");
+                this.libraryMenu.addUploadedImage(URL.createObjectURL(file));
             });
-          }
+        }
     }
 
     private onDragOver(ev: DragEvent) {
