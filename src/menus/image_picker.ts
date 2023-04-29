@@ -30,7 +30,7 @@ export class ImagePicker {
 
         this.libraryMenu = new LibraryMenu(this);
         this.uploadMenu = new UploadMenu(this, this.libraryMenu);
-        this.insertImage = new InsertImage(this);
+        this.insertImage = new InsertImage(this, this.libraryMenu);
     }
 
     show() {
@@ -40,6 +40,7 @@ export class ImagePicker {
 
     hide() {
         this.mainMenu.hidden = true;
+        this.canvas.show();
     }
 
     hideSubMenus() {
